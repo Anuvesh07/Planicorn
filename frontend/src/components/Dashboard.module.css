@@ -1,0 +1,107 @@
+.dashboard {
+  min-height: 100vh;
+  background-color: #f4f5f7;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header h1 {
+  margin: 0;
+  color: #172b4d;
+  font-size: 1.5rem;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userInfo span {
+  color: #5e6c84;
+  font-size: 0.9rem;
+}
+
+.logoutBtn {
+  background-color: #0079bf;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.logoutBtn:hover {
+  background-color: #005a8b;
+}
+
+.main {
+  flex: 1;
+  padding: 0;
+  overflow: hidden;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: #5e6c84;
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.25rem;
+  }
+
+  .userInfo {
+    gap: 0.75rem;
+  }
+
+  .userInfo span {
+    font-size: 0.8rem;
+  }
+
+  .logoutBtn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.5rem 0.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .header h1 {
+    font-size: 1.1rem;
+  }
+
+  .userInfo {
+    align-self: stretch;
+    justify-content: space-between;
+  }
+}

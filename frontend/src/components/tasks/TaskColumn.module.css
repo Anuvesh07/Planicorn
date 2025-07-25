@@ -1,0 +1,205 @@
+.taskColumn {
+  background-color: #f4f5f7;
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 500px;
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.taskColumn.canDrop {
+  border: 2px dashed #0079bf;
+  background-color: #e4f0f6;
+}
+
+.taskColumn.dropActive {
+  border: 2px solid #0079bf;
+  background-color: #cce7f0;
+  transform: scale(1.02);
+}
+
+.columnHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #dfe1e6;
+}
+
+.columnTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.columnIcon {
+  font-size: 18px;
+}
+
+.columnTitle h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #172b4d;
+}
+
+.taskCount {
+  background-color: #dfe1e6;
+  color: #5e6c84;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 20px;
+  text-align: center;
+}
+
+.addTaskBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #5e6c84;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.addTaskBtn:hover {
+  background-color: #e4e6ea;
+  color: #172b4d;
+}
+
+.taskList {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.taskList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.taskList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.taskList::-webkit-scrollbar-thumb {
+  background: #c1c7d0;
+  border-radius: 3px;
+}
+
+.taskList::-webkit-scrollbar-thumb:hover {
+  background: #a5adba;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: #8993a4;
+}
+
+.emptyState p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+}
+
+.emptyAddBtn {
+  background-color: #0079bf;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.emptyAddBtn:hover {
+  background-color: #005a8b;
+}
+
+.dropIndicator {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0079bf;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  pointer-events: none;
+  z-index: 10;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+  .taskColumn {
+    width: 280px;
+    padding: 12px;
+    min-height: 400px;
+  }
+
+  .columnHeader {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .columnTitle h2 {
+    font-size: 15px;
+  }
+
+  .columnIcon {
+    font-size: 16px;
+  }
+
+  .addTaskBtn {
+    font-size: 18px;
+    padding: 6px;
+  }
+
+  .emptyState {
+    padding: 30px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .taskColumn {
+    width: 260px;
+    padding: 10px;
+    min-height: 350px;
+  }
+
+  .columnTitle h2 {
+    font-size: 14px;
+  }
+
+  .taskCount {
+    font-size: 11px;
+    padding: 1px 6px;
+  }
+
+  .emptyState {
+    padding: 25px 10px;
+  }
+
+  .emptyAddBtn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

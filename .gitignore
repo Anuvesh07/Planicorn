@@ -1,0 +1,80 @@
+# 📦 Dependencies
+node_modules/
+*/node_modules/
+
+# 🚀 Build outputs
+dist/
+build/
+
+# 🔐 Environment variables
+.env
+.env.*.local
+
+# 📝 Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ⚙️ Runtime files
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ✅ Test coverage
+coverage/
+*.lcov
+.nyc_output
+
+# 📁 Package manager caches
+jspm_packages/
+.npm
+
+# 🧹 Linter + bundler cache
+.eslintcache
+.rpt2_cache/
+.rts2_cache_*/
+
+# 🧠 REPL history
+.node_repl_history
+
+# 📦 npm pack output
+*.tgz
+
+# 🧵 Yarn
+.yarn-integrity
+
+# ⚡ Parcel
+.cache
+.parcel-cache
+
+# ⚙️ Framework builds
+.next
+.nuxt
+.cache/
+public
+
+# 📘 Storybook
+.out
+.storybook-out
+
+# ⏱ Temp folders
+tmp/
+temp/
+
+# 🧰 Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 🍏 OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

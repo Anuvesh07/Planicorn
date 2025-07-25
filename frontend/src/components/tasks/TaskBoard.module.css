@@ -1,0 +1,218 @@
+.taskBoard {
+  padding: 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow-x: auto;
+}
+
+.boardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 8px;
+}
+
+.boardTitle {
+  margin: 0;
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.boardStats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.totalTasks {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.columnsContainer {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  min-width: fit-content;
+  padding-bottom: 20px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: white;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: white;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.error h3 {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.error p {
+  margin: 0 0 20px 0;
+  font-size: 16px;
+  opacity: 0.9;
+  max-width: 400px;
+}
+
+.retryBtn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.retryBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+  .taskBoard {
+    padding: 16px;
+  }
+
+  .boardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .boardTitle {
+    font-size: 24px;
+  }
+
+  .boardStats {
+    align-self: stretch;
+    justify-content: flex-end;
+  }
+
+  .totalTasks {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .columnsContainer {
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+
+  .loading,
+  .error {
+    height: 300px;
+    padding: 30px 20px;
+  }
+
+  .error h3 {
+    font-size: 20px;
+  }
+
+  .error p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .taskBoard {
+    padding: 12px;
+  }
+
+  .boardTitle {
+    font-size: 20px;
+  }
+
+  .totalTasks {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .columnsContainer {
+    gap: 12px;
+  }
+
+  .loading,
+  .error {
+    height: 250px;
+    padding: 20px 15px;
+  }
+
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border-width: 3px;
+  }
+
+  .retryBtn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+/* Horizontal scrolling for mobile */
+@media (max-width: 1024px) {
+  .taskBoard {
+    overflow-x: auto;
+  }
+
+  .columnsContainer {
+    min-width: 960px; /* Ensure columns don't compress too much */
+  }
+}
