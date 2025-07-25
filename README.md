@@ -1,295 +1,143 @@
-# Task Manager
+<div align="center">
 
-A modern task management application built with React.js frontend and Node.js backend, featuring drag-and-drop functionality, real-time updates, and secure user authentication.
+# ✨ Task Manager
 
-## Features
+*A modern, minimalist task management application*
 
-- **User Authentication**: Secure registration and login system with JWT tokens
-- **Task Management**: Create, edit, delete, and organize tasks
-- **Drag & Drop**: Intuitive drag-and-drop interface for task status updates
-- **Real-time Updates**: Live synchronization across multiple users using Socket.IO
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
-- **Security**: Comprehensive security measures including rate limiting, CORS, and input validation
-- **Performance Optimized**: React.memo, lazy loading, and API call debouncing for optimal performance
+[![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-16+-green?logo=node.js)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-green?logo=mongodb)](https://mongodb.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Project Structure
+[Demo](#) • [Features](#features) • [Quick Start](#quick-start) • [API](#api)
+
+</div>
+
+---
+
+## ✨ Features
+
+🔐 **Secure Authentication** - JWT-based login & registration  
+📋 **Drag & Drop Tasks** - Intuitive Kanban-style board  
+⚡ **Real-time Updates** - Live sync across devices  
+📱 **Responsive Design** - Works on all screen sizes  
+🚀 **Performance Optimized** - Lazy loading & caching  
+🛡️ **Security First** - Rate limiting & input validation  
+
+## 🚀 Quick Start
+
+```bash
+# Clone & install
+git clone <your-repo-url>
+cd task-manager
+
+# Backend setup
+cd backend && npm install
+cp .env.example .env  # Configure your MongoDB URI
+
+# Frontend setup  
+cd ../frontend && npm install
+cp .env.example .env
+
+# Start development servers
+cd ../backend && npm run dev    # Terminal 1
+cd ../frontend && npm run dev   # Terminal 2
+```
+
+**Open** → `http://localhost:5173`
+
+## 🛠️ Tech Stack
+
+**Frontend**  
+React • Vite • React DnD • Axios • CSS Modules
+
+**Backend**  
+Node.js • Express • MongoDB • Socket.IO • JWT
+
+**DevOps**  
+PM2 • Docker Ready • Automated Deployment
+
+## 📁 Project Structure
 
 ```
 task-manager/
-├── frontend/                 # React.js frontend application
-│   ├── src/
-│   │   ├── components/      # React components (optimized with React.memo)
-│   │   ├── contexts/        # React contexts
-│   │   ├── services/        # API services (with caching and debouncing)
-│   │   ├── hooks/           # Custom hooks (including useDebounce)
-│   │   ├── utils/           # Utility functions
-│   │   └── __tests__/       # Test files including integration tests
-│   ├── package.json
-│   └── vite.config.js       # Optimized for production builds
-├── backend/                  # Node.js/Express backend API
-│   ├── src/
-│   │   ├── config/          # Configuration files
-│   │   ├── controllers/     # Route controllers
-│   │   ├── middleware/      # Express middleware (security, auth, etc.)
-│   │   ├── models/          # Database models
-│   │   ├── routes/          # API routes
-│   │   └── socket/          # Socket.IO handlers
-│   ├── scripts/             # Database migration and utility scripts
-│   ├── package.json
-│   └── ecosystem.config.js  # PM2 configuration for production
-├── scripts/                  # Deployment and utility scripts
-│   └── deploy.sh            # Automated deployment script
-└── README.md
+├── 🎨 frontend/          # React app
+├── ⚙️  backend/           # Node.js API  
+├── 📜 scripts/           # Deployment tools
+└── 📚 docs/              # Documentation
 ```
 
-## Tech Stack
+## 🔧 Environment Setup
 
-### Frontend
-- React.js with hooks and performance optimizations
-- React Router for navigation
-- React DnD for drag-and-drop functionality
-- Axios for API communication
-- CSS Modules for styling
-- Vite for build tooling and development server
-- Lazy loading for code splitting
-
-### Backend
-- Node.js with Express.js
-- MongoDB with Mongoose ODM
-- JWT for authentication
-- Socket.IO for real-time features
-- Helmet for security headers
-- Rate limiting and request throttling
-- PM2 for production process management
-
-## Getting Started
-
-### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (local installation or MongoDB Atlas)
-- npm or yarn package manager
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd task-manager
-```
-
-2. Install backend dependencies:
-```bash
-cd backend
-npm install
-```
-
-3. Install frontend dependencies:
-```bash
-cd ../frontend
-npm install
-```
-
-4. Set up environment variables:
-
-Backend (.env):
+**Backend** (`.env`)
 ```env
-NODE_ENV=development
+MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/taskmanager
+JWT_SECRET=your-super-secret-key
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/taskmanager
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-JWT_EXPIRES_IN=15m
-JWT_REFRESH_EXPIRES_IN=7d
-ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
-TRUST_PROXY=1
-ENABLE_HTTPS_REDIRECT=false
-RATE_LIMIT_WINDOW_MS=900000
-RATE_LIMIT_MAX_REQUESTS=1000
-AUTH_RATE_LIMIT_MAX=10
 ```
 
-Frontend (.env):
+**Frontend** (`.env`)
 ```env
 VITE_API_URL=http://localhost:5000
-VITE_APP_NAME=Task Manager
-VITE_APP_VERSION=1.0.0
 VITE_SOCKET_URL=http://localhost:5000
 ```
 
-5. Start MongoDB service (if running locally)
+## 📡 API
 
-6. Run database migrations:
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/auth/register` | User registration |
+| `POST` | `/api/auth/login` | User login |
+| `GET` | `/api/tasks` | Get user tasks |
+| `POST` | `/api/tasks` | Create task |
+| `PUT` | `/api/tasks/:id` | Update task |
+| `DELETE` | `/api/tasks/:id` | Delete task |
+
+## 🧪 Testing
+
 ```bash
-cd backend
-node scripts/migrate.js
+# Backend tests
+cd backend && npm test
+
+# Frontend tests  
+cd frontend && npm test
+
+# Integration tests
+cd frontend && npm test -- --run CompleteUserJourney
 ```
 
-7. Start the development servers:
+## 🚀 Deployment
 
-Backend:
-```bash
-cd backend
-npm run dev
-```
-
-Frontend (in a new terminal):
-```bash
-cd frontend
-npm run dev
-```
-
-8. Open your browser and navigate to `http://localhost:3000`
-
-## API Endpoints
-
-### Health Checks
-- `GET /api/health` - Basic health check
-- `GET /api/health/database` - Database health check
-
-### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `GET /api/auth/verify` - Token verification
-
-### Tasks
-- `GET /api/tasks` - Get all user tasks
-- `POST /api/tasks` - Create new task
-- `PUT /api/tasks/:id` - Update task
-- `DELETE /api/tasks/:id` - Delete task
-- `PATCH /api/tasks/:id/status` - Update task status
-
-## Testing
-
-Run backend tests:
-```bash
-cd backend
-npm test
-```
-
-Run frontend tests:
-```bash
-cd frontend
-npm test
-```
-
-Run integration tests:
-```bash
-cd frontend
-npm test -- --run CompleteUserJourney
-```
-
-## Performance Features
-
-### Frontend Optimizations
-- **React.memo**: All components are memoized to prevent unnecessary re-renders
-- **Lazy Loading**: Components are loaded on-demand using React.lazy()
-- **API Debouncing**: API calls are debounced to prevent excessive requests
-- **Code Splitting**: Automatic code splitting with Vite for optimal bundle sizes
-- **Caching**: API responses are cached to reduce server load
-
-### Backend Optimizations
-- **Database Indexing**: Optimized MongoDB indexes for fast queries
-- **Connection Pooling**: Efficient database connection management
-- **Rate Limiting**: Prevents abuse and ensures fair resource usage
-- **Compression**: Response compression for faster data transfer
-
-## Deployment
-
-### Quick Deployment
-
-Use the automated deployment script:
+**Quick Deploy**
 ```bash
 chmod +x scripts/deploy.sh
 ./scripts/deploy.sh
 ```
 
-Available deployment commands:
-- `./scripts/deploy.sh` - Full deployment
-- `./scripts/deploy.sh build-only` - Build frontend only
-- `./scripts/deploy.sh test-only` - Run tests only
-- `./scripts/deploy.sh migrate` - Run database migrations only
-
-### Manual Production Deployment
-
-1. **Environment Setup**:
-```bash
-# Production environment variables
-export NODE_ENV=production
-export MONGODB_URI=your-production-mongodb-uri
-export JWT_SECRET=your-production-jwt-secret
-export ALLOWED_ORIGINS=https://yourdomain.com
-export VITE_API_URL=https://api.yourdomain.com
-export VITE_SOCKET_URL=https://api.yourdomain.com
-```
-
-2. **Build Frontend**:
-```bash
-cd frontend
-npm ci
-npm run build
-```
-
-3. **Install Backend Dependencies**:
+**Production with PM2**
 ```bash
 cd backend
-npm ci --only=production
-```
-
-4. **Run Database Migrations**:
-```bash
-cd backend
-node scripts/migrate.js
-```
-
-5. **Start with PM2** (recommended for production):
-```bash
-cd backend
-npm install -g pm2
 pm2 start ecosystem.config.js --env production
-pm2 save
-pm2 startup
 ```
 
-### Health Monitoring
+## 🤝 Contributing
 
-Monitor application health:
-```bash
-# Check API health
-curl http://localhost:5000/api/health
-
-# Check database health
-curl http://localhost:5000/api/health/database
-
-# Check migration status
-cd backend && node scripts/migrate.js status
-```
-
-## Security Features
-
-- **JWT Authentication**: Secure token-based authentication
-- **Rate Limiting**: Protection against brute force attacks
-- **CORS Configuration**: Controlled cross-origin resource sharing
-- **Helmet Security Headers**: Comprehensive security headers
-- **Input Validation**: Server-side validation and sanitization
-- **HTTPS Enforcement**: Automatic HTTPS redirect in production
-- **CSP (Content Security Policy)**: Protection against XSS attacks
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-### Development Guidelines
+## 📄 License
 
-- Follow ESLint configuration
-- Write tests for new features
-- Update documentation for API changes
-- Use conventional commit messages
-- Ensure all tests pass before submitting PR
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## License
+---
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+<div align="center">
+
+**Made with ❤️ by [Your Name]**
+
+[⭐ Star this repo](https://github.com/yourusername/task-manager) • [🐛 Report Bug](https://github.com/yourusername/task-manager/issues) • [💡 Request Feature](https://github.com/yourusername/task-manager/issues)
+
+</div>
